@@ -1,0 +1,24 @@
+﻿@model ApplicationUser
+<div class="row">
+    <div class="col-6">
+        <h3>Account information</h3>
+        
+        <p>
+            User Name : @Model.Name
+        </p>
+        
+        <p>
+            User Last Name : @Model.SurName
+        </p>
+        
+        
+        <p>
+            User Account Count = <getAccountCount application-user-id="@Model.Id"></getAccountCount>
+        </p>
+    </div>
+    
+    <div class="col-6">
+        <h4>Adding Operations</h4>
+    </div>
+
+</div>

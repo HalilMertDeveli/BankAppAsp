@@ -21,7 +21,7 @@ namespace Udemy.BankApp.Data.Migrations3
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Udemy.BankApp.Data.Entities.Account", b =>
+            modelBuilder.Entity("Udemy.BankApp.Data.Entities.AccountController", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -68,7 +68,7 @@ namespace Udemy.BankApp.Data.Migrations3
                     b.ToTable("ApplicationUsers");
                 });
 
-            modelBuilder.Entity("Udemy.BankApp.Data.Entities.Account", b =>
+            modelBuilder.Entity("Udemy.BankApp.Data.Entities.AccountController", b =>
                 {
                     b.HasOne("Udemy.BankApp.Data.Entities.ApplicationUser", "ApplicationUser")
                         .WithMany("Accounts")
