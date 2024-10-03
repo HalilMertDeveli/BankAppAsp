@@ -16,6 +16,7 @@
         <td></td>
         <td></td>
         <td>Account Count</td>
+        
     </tr>
     </thead>
     <tbody>
@@ -28,6 +29,9 @@
             <td><button class="btn btn-danger">Edit</button></td>
             <td>
                 <getAccountCount application-user-id="@applicationUser.Id"></getAccountCount>
+            </td>
+            <td >
+                <a asp-action="Create" asp-controller="Home" asp-route-id="@applicationUser.Id">Create New Account</a>
             </td>
         </tr>
     }
