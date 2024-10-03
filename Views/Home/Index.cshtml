@@ -1,11 +1,45 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-@* @{
-    Layout = "_Layout";
-} *@
+﻿@model List<ApplicationUser>
+<html>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+<head>
+
+</head>
+
+
+<body>
+<table class=" mt-4 table table-hover table-bordered table-sm" >
+    <thead>
+    <tr>
+        <td>Name</td>
+        <td>Surname</td>
+        <td></td>
+        <td></td>
+        <td>Account Count</td>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var applicationUser in @Model)
+    {
+        <tr>
+            <td>@applicationUser.Name</td>
+            <td>@applicationUser.SurName</td>
+            <td><button class="btn btn-danger"> Delete</button></td>
+            <td><button class="btn btn-danger">Edit</button></td>
+            <td>
+                <getAccountCount application-user-id="@applicationUser.Id"></getAccountCount>
+            </td>
+        </tr>
+    }
+   
+    </tbody>
+</table>
+
+
+
+
+</body>
+
+
+
+</html>

@@ -6,7 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<BankContext>(opt => opt.UseSqlServer("Server = localhost; Database = BankDb; Trusted_Connection=True; TrustServerCertificate=True"));
+builder.Services.AddDbContext<BankContext>(opt => 
+    opt.UseSqlServer("Server = localhost; Database = BankDb; Trusted_Connection=True; TrustServerCertificate=True"));
 
 var app = builder.Build();
 
