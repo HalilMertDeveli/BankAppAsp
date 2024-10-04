@@ -1,6 +1,6 @@
-﻿@model ApplicationUser
+﻿@model UserListModel
 <div class="row">
-    <div class="col-6">
+    <div class="col-6" >
         <h3>Account information</h3>
         
         <p>
@@ -18,7 +18,22 @@
     </div>
     
     <div class="col-6">
-        <h4>Adding Operations</h4>
+        <form method="post" asp-action="Create" asp-controller="Account">
+            <input type="hidden" name="ApplicationUserId" value="@Model.Id"/>
+            <div class="mb-3">
+                <label class="form-label">Account Number:</label>
+                <input type="number" name="AccountNumber" class="form-control"/>
+            </div>
+
+            <div class="mb-3">
+                <label class="from-control">Balance:</label>
+                <input type="number" class="form-control" name="Bakance"/>
+            </div>
+
+            <div class="mb-3">
+                <button class="btn btn-primary">Create Account</button>
+            </div>
+        </form>
     </div>
 
 </div>

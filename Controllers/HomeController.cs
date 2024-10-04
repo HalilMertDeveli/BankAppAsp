@@ -18,7 +18,12 @@ namespace Udemy.BankApp.Controllers
 
         public IActionResult Index()
         {
-            return View(_context.ApplicationUsers.ToList());
+            return View(_context.ApplicationUsers.Select(x=>new UserListModel()
+            {
+                Id = x.Id,
+                Name = x.Name,
+                SurName = x.SurName
+            }).ToList());
         }
 
         public IActionResult Privacy()

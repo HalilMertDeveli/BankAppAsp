@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Udemy.BankApp.Data.Context;
+using Udemy.BankApp.Data.Entities;
+using Udemy.BankApp.Models;
 
 namespace Udemy.BankApp.Controllers
 {
@@ -19,8 +21,26 @@ namespace Udemy.BankApp.Controllers
 
         public IActionResult Create(int id)
         {
-            var userInfo = _context.ApplicationUsers.SingleOrDefault(x => x.Id == id);
+            var userInfo = _context.ApplicationUsers.Select(x=>new UserListModel()
+            {
+                Id = x.Id,
+                Name = x.Name,
+                SurName = x.SurName
+            }).SingleOrDefault(x => x.Id == id);
             return View(userInfo);
+        }
+
+        [HttpPost]
+        public IActionResult Create(AccountCreateModel model)
+        {
+            _context.Accounts.Add(new Account()
+            {
+                AccountNumber = model.AccountNumber,
+                ApplicationUserId = model.ApplicationUserId,
+                Balance = model.Balance,
+            });
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
