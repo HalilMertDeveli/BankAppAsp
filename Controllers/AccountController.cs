@@ -12,8 +12,7 @@ namespace Udemy.BankApp.Controllers
     {
         private readonly IApplicationUserRepository _applicationUserRepository;
         private readonly IUserMapper _userMapper;
-        private readonly BankContext _context;
-        private readonly IAccountRepository _accountRepository;
+         private readonly IAccountRepository _accountRepository;
         private readonly IAccountMapper _accountMapper;
         public AccountController( IApplicationUserRepository applicationUserRepository, IUserMapper userMapper, IAccountRepository accountRepository, IAccountMapper accountMapper)
         {

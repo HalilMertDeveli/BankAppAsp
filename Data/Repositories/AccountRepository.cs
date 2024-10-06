@@ -21,6 +21,19 @@ namespace Udemy.BankApp.Data.Repositories
         {
             _context.Accounts.Add(account);
             _context.SaveChanges();
+
+            _context.Set<Account>().Add(account);
+            _context.SaveChanges();
+        }
+
+
+        public void Remove(Account account)
+        {
+            _context.Accounts.Remove(account);
+            _context.SaveChanges();
+
+            _context.Set<Account>().Remove(account);
+            _context.SaveChanges();
         }
     }
 }
