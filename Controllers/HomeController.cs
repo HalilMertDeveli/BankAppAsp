@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Udemy.BankApp.Data.Context;
+using Udemy.BankApp.Data.Interfacesses;
+using Udemy.BankApp.Data.Repositories;
+using Udemy.BankApp.Mapping;
 using Udemy.BankApp.Models;
 
 namespace Udemy.BankApp.Controllers
@@ -8,22 +11,19 @@ namespace Udemy.BankApp.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly BankContext _context;
+        private readonly IApplicationUserRepository _applicationUserRepository;
+        private readonly IUserMapper _userMapper;
 
-        public HomeController(ILogger<HomeController> logger,BankContext context)
+        public HomeController(ILogger<HomeController> logger, IApplicationUserRepository applicationUserRepository,IUserMapper userMapper)
         {
             _logger = logger;
-            _context = context;
+            _applicationUserRepository = applicationUserRepository;
+            _userMapper = userMapper;
         }
 
         public IActionResult Index()
         {
-            return View(_context.ApplicationUsers.Select(x=>new UserListModel()
-            {
-                Id = x.Id,
-                Name = x.Name,
-                SurName = x.SurName
-            }).ToList());
+            return View(_userMapper.MapToListOfUserList(_applicationUserRepository.GetAll()));
         }
 
         public IActionResult Privacy()

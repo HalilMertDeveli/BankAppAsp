@@ -136,3 +136,4 @@ C:\Users\halil\source\repos\Udemy.BankApp\Udemy.BankApp\bin\Debug\net8.0\runtime
 C:\Users\halil\source\repos\Udemy.BankApp\Udemy.BankApp\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\halil\source\repos\Udemy.BankApp\Udemy.BankApp\obj\Debug\net8.0\Udemy.BankApp.csproj.AssemblyReference.cache
 C:\Users\halil\source\repos\Udemy.BankApp\Udemy.BankApp\obj\Debug\net8.0\Udemy.Ba.5C1EE7C8.Up2Date
+C:\Users\halil\source\repos\Udemy.BankApp\Udemy.BankApp\obj\Debug\net8.0\Udemy.BankApp.sourcelink.json

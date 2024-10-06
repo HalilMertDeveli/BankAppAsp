@@ -1,17 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Udemy.BankApp.Data.Context;
 using Udemy.BankApp.Data.Entities;
+using Udemy.BankApp.Data.Interfacesses;
+using Udemy.BankApp.Data.Repositories;
+using Udemy.BankApp.Mapping;
 using Udemy.BankApp.Models;
 
 namespace Udemy.BankApp.Controllers
 {
     public class AccountController : Controller
     {
+        private readonly IApplicationUserRepository _applicationUserRepository;
+        private readonly IUserMapper _userMapper;
         private readonly BankContext _context;
-
-        public AccountController(BankContext context)
+        private readonly IAccountRepository _accountRepository;
+        private readonly IAccountMapper _accountMapper;
+        public AccountController( IApplicationUserRepository applicationUserRepository, IUserMapper userMapper, IAccountRepository accountRepository, IAccountMapper accountMapper)
         {
-            _context = context;
+
+            _applicationUserRepository = applicationUserRepository;
+            _userMapper = userMapper;
+            _accountRepository = accountRepository;
+            _accountMapper = accountMapper;
         }
 
         public IActionResult Index()
@@ -21,25 +31,15 @@ namespace Udemy.BankApp.Controllers
 
         public IActionResult Create(int id)
         {
-            var userInfo = _context.ApplicationUsers.Select(x=>new UserListModel()
-            {
-                Id = x.Id,
-                Name = x.Name,
-                SurName = x.SurName
-            }).SingleOrDefault(x => x.Id == id);
+            var userInfo = _userMapper.MapToUserList(_applicationUserRepository.GetById(id));
             return View(userInfo);
         }
 
         [HttpPost]
         public IActionResult Create(AccountCreateModel model)
         {
-            _context.Accounts.Add(new Account()
-            {
-                AccountNumber = model.AccountNumber,
-                ApplicationUserId = model.ApplicationUserId,
-                Balance = model.Balance,
-            });
-            _context.SaveChanges();
+            _accountRepository.Create(model);
+            
             return RedirectToAction("Index", "Home");
         }
     }

@@ -1,6 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Udemy.BankApp.Data.Context;
+using Udemy.BankApp.Data.Interfacesses;
+using Udemy.BankApp.Data.Repositories;
+using Udemy.BankApp.Mapping;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,7 +11,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<BankContext>(opt => 
     opt.UseSqlServer("Server = localhost; Database = BankDb; Trusted_Connection=True; TrustServerCertificate=True"));
-
+builder.Services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
+builder.Services.AddScoped<IUserMapper, UserMapper>();
+builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+builder.Services.AddScoped<IAccountMapper, AccountMapper>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
