@@ -9,18 +9,17 @@ namespace Udemy.BankApp.Data.Repositories
     public class AccountRepository: IAccountRepository
     {
         private readonly BankContext _context;
-        private readonly IAccountMapper _accountMapper;
 
-        public AccountRepository(BankContext context, IAccountMapper accountMapper)
+        public AccountRepository(BankContext context )
         {
             _context = context;
-            _accountMapper = accountMapper;
+            
         }
 
 
-        public void Create(AccountCreateModel model)
+        public void Create(Account account)
         {
-            _context.Accounts.Add(_accountMapper.Map(model));
+            _context.Accounts.Add(account);
             _context.SaveChanges();
         }
     }

@@ -38,7 +38,7 @@ namespace Udemy.BankApp.Controllers
         [HttpPost]
         public IActionResult Create(AccountCreateModel model)
         {
-            _accountRepository.Create(model);
+            _accountRepository.Create(_accountMapper.Map(model));
             
             return RedirectToAction("Index", "Home");
         }
