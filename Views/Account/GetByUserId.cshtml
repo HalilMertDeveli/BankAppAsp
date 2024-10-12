@@ -1,0 +1,49 @@
+﻿@model List<AccountListModel>
+
+<html>
+<head>
+
+</head>
+
+<body>
+    <div class="row mt-4">
+        <div class="col-6">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">User Information</h5>
+                    <p class="card-text">Full Name: @ViewBag.FullName</p>
+                    <a asp-action="Index" asp-controller="Home" class="btn btn-primary">Go Back to User List Page</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <h5>Account Information</h5>
+            @if (@Model.Count > 0)
+            {
+                @foreach (var account in Model)
+                {
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Account Number:  @account.AccountNumber</h5>
+                            <p class="card-text">Balance Information: @account.Balance</p>
+                            <a asp-action="SendMoney" asp-controller="Account" asp-route-accountId="@account.Id" class="btn btn-warning">Send Money</a>
+                        </div>
+                    </div>
+                }
+
+            }
+            else
+            {
+                <div class="alert alert-primary" role="alert">
+                    there is no account
+                </div>
+
+            }
+
+        </div>
+
+    </div>
+</body>
+</html>
+

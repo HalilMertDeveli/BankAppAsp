@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Udemy.BankApp.Data.Context;
+using Udemy.BankApp.Data.Interfaceses;
 using Udemy.BankApp.Data.Interfacesses;
 using Udemy.BankApp.Data.Repositories;
 using Udemy.BankApp.Mapping;
@@ -15,6 +16,11 @@ builder.Services.AddScoped<IApplicationUserRepository, ApplicationUserRepository
 builder.Services.AddScoped<IUserMapper, UserMapper>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 builder.Services.AddScoped<IAccountMapper, AccountMapper>();
+
+//generic things
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

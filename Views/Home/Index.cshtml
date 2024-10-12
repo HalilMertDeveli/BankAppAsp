@@ -31,8 +31,9 @@
                 <getAccountCount application-user-id="@applicationUser.Id"></getAccountCount>
             </td>
             <td >
-                <a asp-action="Create" asp-controller="Account" asp-route-id="@applicationUser.Id">Create New AccountController</a>
-            </td>
+                <a asp-action="Create" asp-controller="Account" asp-route-id="@applicationUser.Id">Create New Account</a>
+                <a asp-action="GetByUserId" asp-controller="Account" asp-route-userId="@applicationUser.Id">Get Accounts</a>
+                </td>
         </tr>
     }
    
