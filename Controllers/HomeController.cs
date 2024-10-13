@@ -13,15 +13,15 @@ namespace Udemy.BankApp.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        //private readonly IApplicationUserRepository _applicationUserRepository;
         private readonly IUserMapper _userMapper;
         private readonly IUow _uow;
 
-        public HomeController(ILogger<HomeController> logger, IApplicationUserRepository applicationUserRepository,IUserMapper userMapper)
+
+        public HomeController(ILogger<HomeController> logger, IUserMapper userMapper, IUow uow)
         {
             _logger = logger;
-            //_applicationUserRepository = applicationUserRepository;
             _userMapper = userMapper;
+            _uow = uow;
         }
 
         public IActionResult Index()
